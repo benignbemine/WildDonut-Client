@@ -1,27 +1,40 @@
 <div>
-  <h1>Create Booking</h1>
+  <h1>Create Class</h1>
   <form>
 
     <div>
-      <label for="bookingName">Booking Name: </label>
-      <input type="text" name="bookingname" ng-model="booking.name" required>
+      <label for="ClassName">Class Name: </label>
+      <input type="text" name="Classname" ng-model="class.name" required>
     </div>
 
     <div>
-      <label for="expertise">expertise: </label>
-      <input type="text" name="expertise" ng-model="booking.expertise" required>
+      <label for="description">description: </label>
+      <input type="text" name="description" ng-model="class.description" required>
     </div>
 
     <div>
       <label for="rate">rate: </label>
-      <input type="text" name="rate" ng-model="booking.rate" required>
+      <input type="text" name="rate" ng-model="class.rate" required>
+    </div>
+
+    <h3>Create booking for class</h3>
+
+    <div ng-repeat="booking in class.available">
+      startTime: {{start_time}}
+      endTime: {{end_time}}
     </div>
 
     <div>
-      <label for="availability">availability: </label>
-      <input type="text" name="availability" ng-model="booking.availability" required>
+      <label for="availability">StartTime: </label>
+      <input type="date" name="startTime" ng-model="start" required>
     </div>
 
-    <button type="submit" value="Submit" ng-click="createBooking()">Create Booking</button>
+    <div>
+      <label for="availability">EndTime: </label>
+      <input type="date" name="endTime" ng-model="end" required>
+    </div>
+
+    <button type="submit" value="Submit" ng-click="addBooking()">Add Booking</button>
+    <button type="submit" value="Submit" ng-click="createClass()">Create Class</button>
   </form>
 </div>
