@@ -6,14 +6,11 @@
 (function() {
 
   angular
-    .module('wildDonut', ['ionic', 'ui.router', 'facebook', 'ionic.rating', 'ngCookies', 'ngCordova', 'angularFileUpload'])
-    .config(function($stateProvider, $urlRouterProvider, FacebookProvider, $ionicConfigProvider) {
+    .module('wildDonut', ['ionic', 'ui.router', 'ionic.rating', 'ngCookies', 'ngCordova', 'angularFileUpload', 'ngCordovaOauth'])
+    .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
       // Remove back button text throughout app
       $ionicConfigProvider.backButton.previousTitleText(false).text('  ');
-
-      // FB authentication
-      FacebookProvider.init('489613531189387');
 
       // for any unmatched urls, redirect to /home
       $urlRouterProvider.otherwise('/');
@@ -159,7 +156,7 @@
         });
     })
     .run(['$ionicPlatform','$rootScope', 'State', '$location', '$cookieStore', function($ionicPlatform, $rootScope, State, $location, $cookieStore) {
-      
+
       // Check for user cookie and redirect to browse if found
       // Do this immediately on app run
       if ($cookieStore.get('user')) {
